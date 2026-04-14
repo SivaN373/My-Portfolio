@@ -1,164 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Siva Nagaraju | Data Analyst & Data Engineer</title>
+<title>Siva Nagaraju | Data Analyst & Data Engineer</title>
 
-    <!-- ✅ ONLY ONE correct CSS link -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <!-- Optional icons -->
-    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+<link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+
+/* GLOBAL */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5f7fa;
+  transition: 0.3s;
+}
+
+body.dark {
+  background: #121212;
+  color: white;
+}
+
+/* NAV */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: white;
+  position: sticky;
+  top: 0;
+}
+
+body.dark .nav {
+  background: #1e1e1e;
+}
+
+.nav__list {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+/* HERO */
+.home {
+  padding: 100px 50px;
+}
+
+.home__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home__text h1 {
+  font-size: 48px;
+}
+
+.home__text span {
+  color: #007bff;
+}
+
+.home__image img {
+  width: 300px;
+  border-radius: 50%;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* BUTTONS */
+.btn {
+  background: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn-outline {
+  border: 2px solid #007bff;
+  padding: 10px 20px;
+  color: #007bff;
+  border-radius: 5px;
+}
+
+/* PROJECTS */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+body.dark .card {
+  background: #1e1e1e;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+/* SKILLS BAR */
+.bar {
+  background: #ddd;
+  height: 10px;
+  border-radius: 5px;
+}
+
+.bar span {
+  display: block;
+  height: 100%;
+  background: #007bff;
+  width: 0;
+  transition: 1s;
+}
+
+/* MOBILE */
+@media (max-width:768px){
+  .home__content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+</style>
+
 </head>
 
 <body>
 
-<!-- ===== HEADER ===== -->
-<header class="l-header">
-    <nav class="nav bd-grid">
-        <div>
-            <a href="#" class="nav__logo">Siva Nagaraju</a>
-        </div>
+<!-- NAV -->
+<header>
+<nav class="nav">
+  <h2>Siva Nagaraju</h2>
 
-        <div class="nav__menu" id="nav-menu">
-            <ul class="nav__list">
-                <li><a href="#home" class="nav__link active-link">Home</a></li>
-                <li><a href="#about" class="nav__link">About</a></li>
-                <li><a href="#skills" class="nav__link">Skills</a></li>
-                <li><a href="#projects" class="nav__link">Projects</a></li>
-                <li><a href="#contact" class="nav__link">Contact</a></li>
-            </ul>
-        </div>
+  <ul class="nav__list">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 
-        <!-- Mobile toggle -->
-        <div class="nav__toggle" id="nav-toggle">
-            <i class='bx bx-menu'></i>
-        </div>
-    </nav>
+  <button id="darkToggle">🌙</button>
+</nav>
 </header>
 
-<main>
-
-<!-- ===== HOME ===== -->
+<!-- HERO -->
 <section class="home" id="home">
-  <div class="home__content">
-    <div class="home__text">
-      <h1>
-        Hi, I'm <span>Siva Nagaraju</span>
-      </h1>
-      <h2>Data Analyst | Data Engineer</h2>
-      <p>
-        Transforming raw data into actionable insights and building scalable data pipelines.
-      </p>
+<div class="home__content">
 
-      <a href="#contact" class="btn">Contact Me</a>
-      <a href="/static/resume.pdf" class="btn-outline" download>Download Resume</a>
-    </div>
+<div class="home__text" data-aos="fade-right">
+<h1>Hi, I'm <span>Siva</span></h1>
+<h2>Data Analyst | Data Engineer</h2>
+<p>Turning data into insights & scalable pipelines.</p>
 
-    <div class="home__image">
-      <img src="{{ url_for('static', filename='img/profile.jpg') }}" alt="profile">
-    </div>
-  </div>
+<a href="#contact" class="btn">Hire Me</a>
+</div>
+
+<div class="home__image" data-aos="fade-left">
+<img src="{{ url_for('static', filename='img/profile.jpg') }}">
+</div>
+
+</div>
 </section>
 
-<!-- ===== ABOUT ===== -->
-<section id="about" class="section">
-    <h2 class="section-title">About Me</h2>
+<!-- SKILLS -->
+<section id="skills">
+<h2>Skills</h2>
 
-    <p style="text-align:center; max-width:800px; margin:auto;">
-        I am a Data Analyst currently working at CTS, Chennai, with hands-on experience in 
-        data analysis, reporting, and visualization. I specialize in SQL, Power BI, and Python 
-        for extracting insights and solving business problems.
+<div>
+<p>SQL</p>
+<div class="bar"><span style="width:90%"></span></div>
 
-        I am also expanding into Data Engineering, working on building scalable data pipelines, 
-        ETL processes, and cloud-based data solutions using Azure.
-    </p>
+<p>Power BI</p>
+<div class="bar"><span style="width:85%"></span></div>
+
+<p>Python</p>
+<div class="bar"><span style="width:80%"></span></div>
+</div>
+
 </section>
 
-<!-- ===== SKILLS ===== -->
-<section id="skills" class="section">
-    <h2 class="section-title">Skills</h2>
+<!-- PROJECTS -->
+<section id="projects">
+<h2>Projects</h2>
 
-    <div class="skills__container bd-grid">
+<div class="projects">
 
-        <div>
-            <h3>Data Analyst</h3>
-            <p>SQL, Power BI, Excel, Python (Pandas, NumPy)</p>
-        </div>
+<div class="card" data-aos="zoom-in">
+<img src="{{ url_for('static', filename='img/WorkA.jpg') }}">
+<h3>Dashboard</h3>
+</div>
 
-        <div>
-            <h3>Data Engineering</h3>
-            <p>ETL Pipelines, Azure Data Factory, Data Lake, PySpark</p>
-        </div>
+<div class="card" data-aos="zoom-in">
+<img src="{{ url_for('static', filename='img/WorkB.jpg') }}">
+<h3>ETL Pipeline</h3>
+</div>
 
-        <div>
-            <h3>Database</h3>
-            <p>MySQL, SQL Server</p>
-        </div>
+</div>
 
-        <div>
-            <h3>Tools</h3>
-            <p>Git, VS Code, Jupyter Notebook</p>
-        </div>
-
-    </div>
 </section>
 
-<!-- ===== PROJECTS ===== -->
-<section id="projects" class="section">
-  <h2 class="section-title">Projects</h2>
+<!-- CONTACT -->
+<section id="contact">
+<h2>Contact</h2>
 
-  <div class="projects">
+<form id="contactForm">
+<input type="text" name="name" placeholder="Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<textarea name="message" placeholder="Message"></textarea>
+<button type="submit">Send</button>
+</form>
 
-    <div class="card">
-      <img src="{{ url_for('static', filename='img/WorkA.jpg') }}">
-      <h3>Sales Dashboard</h3>
-      <p>Power BI dashboard analyzing KPIs and trends.</p>
-    </div>
-
-    <div class="card">
-      <img src="{{ url_for('static', filename='img/WorkB.jpg') }}">
-      <h3>Azure ETL Pipeline</h3>
-      <p>Built scalable pipeline using Data Factory.</p>
-    </div>
-
-    <div class="card">
-      <img src="{{ url_for('static', filename='img/work4.jpg') }}">
-      <h3>Customer Analytics</h3>
-      <p>Segmentation using SQL & Python.</p>
-    </div>
-
-  </div>
 </section>
 
-<!-- ===== CONTACT ===== -->
-<section id="contact" class="section">
-    <h2 class="section-title">Contact</h2>
-
-    <form id="contactForm" class="contact__form">
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <textarea name="message" placeholder="Message" required></textarea>
-
-        <button type="submit" class="button">Send</button>
-    </form>
-</section>
-
-</main>
-
-<!-- ===== FOOTER ===== -->
-<footer class="footer">
-    <p>Siva Nagaraju</p>
-
-    <div>
-        <a href="https://www.linkedin.com/in/sivaadaka373" target="_blank">LinkedIn</a> |
-        <a href="https://github.com/SivaN373" target="_blank">GitHub</a>
-    </div>
+<!-- FOOTER -->
+<footer>
+<p>© Siva Nagaraju</p>
 </footer>
 
-<!-- ✅ CORRECT JS PATH -->
-<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init();
+
+/* DARK MODE */
+document.getElementById("darkToggle").onclick = () => {
+  document.body.classList.toggle("dark");
+};
+
+/* SKILL ANIMATION */
+window.addEventListener("scroll", () => {
+  document.querySelectorAll(".bar span").forEach(bar => {
+    bar.style.width = bar.getAttribute("style").split(":")[1];
+  });
+});
+</script>
 
 </body>
 </html>
