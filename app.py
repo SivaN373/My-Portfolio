@@ -1,10 +1,13 @@
 from flask import Flask, render_template, request, jsonify
 import sqlite3
 from datetime import datetime
+import os
 
 app = Flask(__name__)
 
-# Create DB (auto)
+# -----------------------------
+# DATABASE INIT
+# -----------------------------
 def init_db():
     conn = sqlite3.connect('messages.db')
     cursor = conn.cursor()
@@ -22,33 +25,45 @@ def init_db():
 
 init_db()
 
+# -----------------------------
+# ROUTES
+# -----------------------------
 @app.route('/')
 def home():
     return render_template('index.html')
 
+
 @app.route('/contact', methods=['POST'])
 def contact():
-    data = request.form
+    try:
+        name = request.form.get('name')
+        email = request.form.get('email')
+        message = request.form.get('message')
 
-    name = data.get('name')
-    email = data.get('email')
-    message = data.get('message')
+        # Validation
+        if not name or not email or not message:
+            return jsonify({"message": "All fields are required"}), 400
 
-    if not name or not email or not message:
-        return jsonify({"message": "All fields required"}), 400
+        conn = sqlite3.connect('messages.db')
+        cursor = conn.cursor()
 
-    conn = sqlite3.connect('messages.db')
-    cursor = conn.cursor()
+        cursor.execute('''
+            INSERT INTO contacts (name, email, message, created_at)
+            VALUES (?, ?, ?, ?)
+        ''', (name, email, message, datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
 
-    cursor.execute('''
-        INSERT INTO contacts (name, email, message, created_at)
-        VALUES (?, ?, ?, ?)
-    ''', (name, email, message, datetime.now()))
+        conn.commit()
+        conn.close()
 
-    conn.commit()
-    conn.close()
+        return jsonify({"message": "Message saved successfully!"})
 
-    return jsonify({"message": "Message saved successfully!"})
+    except Exception as e:
+        return jsonify({"message": "Error occurred", "error": str(e)}), 500
 
+
+# -----------------------------
+# RUN APP (PRODUCTION READY)
+# -----------------------------
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
