@@ -1,0 +1,97 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #f5f7fa;
+  color: #333;
+}
+
+/* NAV */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: white;
+  position: fixed;
+  width: 100%;
+}
+
+.nav__list {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+/* HOME */
+.home {
+  padding: 100px 20px;
+}
+
+.home__title {
+  font-size: 40px;
+}
+
+.home__title-color {
+  color: #007bff;
+}
+
+/* BUTTON */
+.button {
+  background: #007bff;
+  color: white;
+  padding: 10px 20px;
+  display: inline-block;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+/* SECTION */
+.section {
+  padding: 60px 20px;
+}
+
+.section-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* GRID */
+.bd-grid {
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* SKILLS */
+.skills__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 20px;
+}
+
+/* PROJECTS */
+.work__img {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* CONTACT */
+.contact__form input,
+.contact__form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+/* FOOTER */
+.footer {
+  background: #222;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
