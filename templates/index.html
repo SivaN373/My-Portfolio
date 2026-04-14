@@ -41,19 +41,25 @@
 <main>
 
 <!-- ===== HOME ===== -->
-<section class="home bd-grid" id="home">
-    <div class="home__data">
-        <h1 class="home__title">
-            Hi,<br>I’m <span class="home__title-color">Siva Nagaraju</span><br>
-            Data Analyst | Data Engineer
-        </h1>
+<section class="home" id="home">
+  <div class="home__content">
+    <div class="home__text">
+      <h1>
+        Hi, I'm <span>Siva Nagaraju</span>
+      </h1>
+      <h2>Data Analyst | Data Engineer</h2>
+      <p>
+        Transforming raw data into actionable insights and building scalable data pipelines.
+      </p>
 
-        <p>
-            Transforming raw data into actionable insights and building scalable data pipelines.
-        </p>
-
-        <a href="#contact" class="button">Contact Me</a>
+      <a href="#contact" class="btn">Contact Me</a>
+      <a href="/static/resume.pdf" class="btn-outline" download>Download Resume</a>
     </div>
+
+    <div class="home__image">
+      <img src="{{ url_for('static', filename='img/profile.jpg') }}" alt="profile">
+    </div>
+  </div>
 </section>
 
 <!-- ===== ABOUT ===== -->
@@ -101,26 +107,29 @@
 
 <!-- ===== PROJECTS ===== -->
 <section id="projects" class="section">
-    <h2 class="section-title">Projects</h2>
+  <h2 class="section-title">Projects</h2>
 
-    <div class="bd-grid">
+  <div class="projects">
 
-        <div class="work__img">
-            <h3>Sales Dashboard (Power BI)</h3>
-            <p>Built interactive dashboards to analyze revenue, trends, and KPIs.</p>
-        </div>
-
-        <div class="work__img">
-            <h3>Azure ETL Pipeline</h3>
-            <p>Designed ETL pipeline using Azure Data Factory and Data Lake.</p>
-        </div>
-
-        <div class="work__img">
-            <h3>Customer Analytics</h3>
-            <p>Performed segmentation using Python and SQL.</p>
-        </div>
-
+    <div class="card">
+      <img src="{{ url_for('static', filename='img/WorkA.jpg') }}">
+      <h3>Sales Dashboard</h3>
+      <p>Power BI dashboard analyzing KPIs and trends.</p>
     </div>
+
+    <div class="card">
+      <img src="{{ url_for('static', filename='img/WorkB.jpg') }}">
+      <h3>Azure ETL Pipeline</h3>
+      <p>Built scalable pipeline using Data Factory.</p>
+    </div>
+
+    <div class="card">
+      <img src="{{ url_for('static', filename='img/work4.jpg') }}">
+      <h3>Customer Analytics</h3>
+      <p>Segmentation using SQL & Python.</p>
+    </div>
+
+  </div>
 </section>
 
 <!-- ===== CONTACT ===== -->
